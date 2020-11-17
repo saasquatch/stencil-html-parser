@@ -1,4 +1,4 @@
-import { Fragment, h, VNode, VNodeData } from "@stencil/core";
+import { h, VNode, VNodeData } from "@stencil/core";
 import { DomElement } from "htmlparser2";
 import styleToObject from "style-to-object";
 
