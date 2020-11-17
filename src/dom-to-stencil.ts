@@ -30,14 +30,14 @@ export default function domToStencil(
 
     const props = attributesToProps(node.attribs);
 
-    let children: VNode[];
+    let children: VNode[] | undefined = undefined;
 
     switch (node.type) {
       case "script":
       case "style":
         // prevent text in <script> or <style> from being escaped
         // https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml
-        if (node.children[0]) {
+        if (node.children && node.children[0]) {
           props.innerHTML = node.children[0].data;
         }
         break;
@@ -45,7 +45,7 @@ export default function domToStencil(
       case "tag":
         // setting textarea value in children is an antipattern in React
         // https://reactjs.org/docs/forms.html#the-textarea-tag
-        if (node.name === "textarea" && node.children[0]) {
+        if (node.name === "textarea" && node.children && node.children[0]) {
           props.defaultValue = node.children[0].data;
         } else if (node.children && node.children.length) {
           // continue recursion of creating React elements (if applicable)
@@ -76,7 +76,10 @@ export default function domToStencil(
   return result;
 }
 
-function attributesToProps<T extends VNodeData>(a: T): VNodeData {
+function attributesToProps<T extends VNodeData>(a?: T): VNodeData {
+  if (!a) {
+    return {};
+  }
   const { style, ...rest } = a;
   return {
     style: styleToObject(style),

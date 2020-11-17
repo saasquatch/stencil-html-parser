@@ -1,4 +1,4 @@
-import { Component, Prop, h, State, Host, VNode } from '@stencil/core';
+import { Component, Prop, h, State, Host } from '@stencil/core';
 import { parse } from '@saasquatch/stencil-html-parser';
 
 @Component({

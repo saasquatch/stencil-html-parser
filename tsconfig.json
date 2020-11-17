@@ -3,7 +3,7 @@
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
     "esModuleInterop": true,
-    "declaration": false,
+    "declaration": true,
     "experimentalDecorators": true,
     "lib": [
       "dom",
@@ -15,10 +15,11 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "jsx": "react",
-    "jsxFactory": "h"
+    "jsxFactory": "h",
+    "strict": true
   },
   "include": [
-    "src", "__tests__/TestComponent.tsx", "__tests__/Styles.spec.ts"
+    "src",
   ],
   "exclude": [
     "node_modules"

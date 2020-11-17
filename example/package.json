@@ -24,7 +24,7 @@
   "dependencies": {
     "@stencil/core": "^2.0.1",
     "dom-context": "0.0.4",
-    "@saasquatch/stencil-html-parser": "file:../"
+    "@saasquatch/stencil-html-parser": "0.0.1"
   },
   "license": "MIT",
   "devDependencies": {

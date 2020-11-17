@@ -5,7 +5,7 @@ import { parse } from "../index";
   tag: "test-component",
 })
 export class TestComponent {
-  @State() html: string;
+  @State() html?: string;
 
   @Method()
   setChildren(html: string) {
