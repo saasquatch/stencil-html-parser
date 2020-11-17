@@ -11,15 +11,20 @@ export class MyParsedWidget {
   @Prop() first: string;
 
   @State() state: number = 0;
-  @State() html: VNode[];
 
-  timer = setInterval(() => {
-    this.state = this.state + 1;
-
-    this.html = parse(`<my-component first="${'run' + this.state}" style="background:red"><my-component first="${'run' + this.state}"></my-component></my-component>`);
-  }, 1000);
+  timer: NodeJS.Timeout;
+  connectedCallback() {
+    this.timer = setInterval(() => {
+      this.state = this.state + 1;
+    }, 2000);
+  }
+  disconnectedCallback() {
+    clearInterval(this.timer);
+  }
 
   render() {
-    return <Host>{this.html}</Host>;
+    const html = parse(`<my-component first="${'run' + this.state}" style="background:green"><my-component first="${'run' + this.state}"></my-component></my-component>`);
+
+    return <Host>{html}</Host>;
   }
 }

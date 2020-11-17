@@ -26,5 +26,8 @@
     "dom-context": "0.0.4",
     "@saasquatch/stencil-html-parser": "file:../"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "jest-cli": "^26.6.3"
+  }
 }

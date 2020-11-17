@@ -18,7 +18,7 @@
     "jsxFactory": "h"
   },
   "include": [
-    "src"
+    "src", "__tests__/TestComponent.tsx", "__tests__/Styles.spec.ts"
   ],
   "exclude": [
     "node_modules"

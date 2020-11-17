@@ -1,37 +1,26 @@
-import { h, VNode, VNodeData } from '@stencil/core';
-import { DomElement } from 'htmlparser2';
+import { Fragment, h, VNode, VNodeData } from "@stencil/core";
+import { DomElement } from "htmlparser2";
+import styleToObject from "style-to-object";
 
 /**
- * Converts DOM nodes to React elements.
+ * Converts DOM nodes to Stencil VNodes elements.
  *
- * @param {DomElement[]} nodes - The DOM nodes.
- * @param {Object} [options={}] - The additional options.
- * @param {Function} [options.replace] - The replacer.
- * @param {Object} [options.library] - The library (React, Preact, etc.).
- * @return {String|ReactElement|ReactElement[]}
  */
-export default function domToStencil(nodes: DomElement[], options:{trim?:boolean} = {}): VNode[] {
-  options = options || {};
-
-  const createElement = h;
-
+export default function domToStencil(
+  nodes: DomElement[],
+  options: { trim?: boolean } = {}
+): VNode[] {
   const result: VNode[] = [];
-  const trim = options.trim;
-
-  let node: DomElement;
-  let props: VNodeData;
-  let children: VNode[];
-  let data;
 
   for (let i = 0, len = nodes.length; i < len; i++) {
-    node = nodes[i];
+    const node: DomElement = nodes[i];
 
-    if (node.type === 'text') {
+    if (node.type === "text") {
       // if trim option is enabled, skip whitespace text nodes
-      if (trim) {
-        data = node.data.trim();
+      if (options.trim) {
+        let data = node.data.trim();
         if (data) {
-          result.push(node.data);
+          result.push(data);
         }
       } else {
         result.push(node.data);
@@ -39,17 +28,13 @@ export default function domToStencil(nodes: DomElement[], options:{trim?:boolean
       continue;
     }
 
-    if (!shouldPassAttributesUnaltered(node)) {
-      props = attributesToProps(node.attribs);
-    } else {
-      props = node.attribs;
-    }
+    const props = attributesToProps(node.attribs);
 
-    children = null;
+    let children: VNode[];
 
     switch (node.type) {
-      case 'script':
-      case 'style':
+      case "script":
+      case "style":
         // prevent text in <script> or <style> from being escaped
         // https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml
         if (node.children[0]) {
@@ -57,10 +42,10 @@ export default function domToStencil(nodes: DomElement[], options:{trim?:boolean
         }
         break;
 
-      case 'tag':
+      case "tag":
         // setting textarea value in children is an antipattern in React
         // https://reactjs.org/docs/forms.html#the-textarea-tag
-        if (node.name === 'textarea' && node.children[0]) {
+        if (node.name === "textarea" && node.children[0]) {
           props.defaultValue = node.children[0].data;
         } else if (node.children && node.children.length) {
           // continue recursion of creating React elements (if applicable)
@@ -79,25 +64,22 @@ export default function domToStencil(nodes: DomElement[], options:{trim?:boolean
       props.key = i;
     }
 
-    result.push(createElement(node.name, props, children));
+    if (children) {
+      // @ts-ignore -- No good types in Stencil for defining `h`
+      result.push(h(node.name, props, ...children));
+    } else {
+      result.push(h(node.name, props));
+    }
+    // result.push(options.createElement(node.name, props, children));
   }
 
   return result;
 }
 
-/**
- * Determines whether attributes should be altered or not.
- *
- * @param {React.ReactElement} node
- * @return {Boolean}
- */
-function shouldPassAttributesUnaltered(
-  // @ts-expect-error
-  node: DomElement,
-) {
-  return true;
-  //   return utilities.PRESERVE_CUSTOM_ATTRIBUTES && node.type === 'tag' && utilities.isCustomComponent(node.name, node.attribs);
-}
-function attributesToProps<T>(a: T): T {
-  return a;
+function attributesToProps<T extends VNodeData>(a: T): VNodeData {
+  const { style, ...rest } = a;
+  return {
+    style: styleToObject(style),
+    ...rest,
+  };
 }

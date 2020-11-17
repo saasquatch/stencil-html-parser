@@ -23,7 +23,7 @@ export class MyWidget {
 
   render() {
     return (
-      <div>
+      <div class="red" style={{}}>
         <h1>Does my child re-render? {this.state}</h1>
         <h2>Component</h2>
         <my-component first={'Run' + this.state}>

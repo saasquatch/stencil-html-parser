@@ -6,14 +6,13 @@ import { Component, h, State, Host } from '@stencil/core';
 export class MyHtmlWidget {
 
   @State() state: number = 0;
-  @State() html: string;
 
   timer = setInterval(() => {
     this.state = this.state + 1;
-    this.html = `<my-component first="${'run' + this.state}"><my-component first="${'run' + this.state}"></my-component></my-component>`;
   }, 1000);
 
   render() {
-    return <Host innerHTML={this.html} />;
+    const html = `<my-component first="${'run' + this.state}"><my-component first="${'run' + this.state}"></my-component></my-component>`;
+    return <Host innerHTML={html} />;
   }
 }
