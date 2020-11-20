@@ -68,6 +68,7 @@ export default function domToStencil(
       // @ts-ignore -- No good types in Stencil for defining `h`
       result.push(h(node.name, props, ...children));
     } else {
+       // @ts-ignore -- No good types in Stencil for defining `h`
       result.push(h(node.name, props));
     }
     // result.push(options.createElement(node.name, props, children));

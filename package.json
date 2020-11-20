@@ -29,7 +29,7 @@
     "ts-jest": "^26.4.4"
   },
   "dependencies": {
-    "@stencil/core": "^2.3.0",
+    "@stencil/core": "^1.17.4",
     "html-dom-parser": "^0.3.0",
     "style-to-object": "^0.3.0"
   }
