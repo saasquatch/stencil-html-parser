@@ -23,7 +23,8 @@ export class MyParsedWidget {
   }
 
   render() {
-    const html = parse(`<my-component first="${'run' + this.state}" style="background:green"><my-component first="${'run' + this.state}"></my-component></my-component>`);
+    const element = "div" // this.state % 2 == 0 ? "div" : "span"
+    const html = parse(`<${element}><my-component first="${'run' + this.state}" style="background:green"><my-component first="${'run' + this.state}"></my-component></my-component></${element}>`);
 
     return <Host>{html}</Host>;
   }

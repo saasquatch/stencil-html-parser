@@ -13,7 +13,12 @@ export class TestComponent {
   }
 
   render() {
-    const el = this.html?parse(this.html):"";
-    return <Host>{el}</Host>;
+    try{
+      const el = this.html?parse(this.html):"";
+      return <Host>{el}</Host>;  
+    }catch(e){
+      console.error("Parsing error", e.message);
+      return <Host></Host>
+    }
   }
 }

@@ -12,6 +12,11 @@ export class MyWidget {
 
   @State() state: number = 0;
 
+
+  constructor(){
+    example.provideGlobally(1000);
+  }
+
   timer = setInterval(() => {
     this.state = this.state + 1;
     example.provideGlobally(1000 - this.state);
@@ -20,6 +25,7 @@ export class MyWidget {
   timer2 = setInterval(() => {
     example.provideGlobally(1000 - this.state);
   }, 1000);
+
 
   render() {
     return (
@@ -31,8 +37,8 @@ export class MyWidget {
         </my-component>
         <h2>Parsed</h2>
         <my-parsed-widget></my-parsed-widget>
-        <h2>Inner HTML</h2>
-        <my-html-widget></my-html-widget>
+        {/* <h2>Inner HTML</h2>
+        <my-html-widget></my-html-widget> */}
       </div>
     );
   }
