@@ -29,7 +29,6 @@
   },
   "dependencies": {
     "@stencil/core": "^1.17.4",
-    "domhandler": "^4.0.0",
     "style-to-object": "^0.3.0"
   }
 }
