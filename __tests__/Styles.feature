@@ -23,16 +23,6 @@ Feature: Styles parsing
             </div>
             """
 
-    Scenario: <script> tags are supported
-        Given html
-            """
-            <script>var foo = "bar";</script>
-            """
-        Then it's parsed and returned as
-            """
-            <script>var foo = "bar";</script>
-            """
-
     Scenario: <style> tags are supported
         Given html
             """
