@@ -1,6 +1,6 @@
 {
   "name": "@saasquatch/stencil-html-parser",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "private": false,
   "description": "An HTML parser for creating dynamic Stencil components",
   "source": "src/index.ts",
@@ -10,6 +10,11 @@
   "files": [
     "build"
   ],
+  "homepage": "https://github.com/saasquatch/stencil-html-parser",
+  "repository": {
+    "type": "git",
+    "directory": "https://github.com/saasquatch/stencil-html-parser"
+  },
   "scripts": {
     "build": "microbundle",
     "dev": "microbundle watch",
