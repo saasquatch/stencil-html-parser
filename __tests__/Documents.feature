@@ -2,7 +2,7 @@ Feature: Document tags are not supported
 
     The parser relies on `template` elements that do not support `<html>`, `<head>` or `<body>` tags.
 
-    Scenario: Template tags are supported
+    Scenario: Document tags will be removed
         Given html
             """
             <html>
