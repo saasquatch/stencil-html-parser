@@ -37,11 +37,10 @@ const CASE_SENSITIVE_TAG_NAMES = [
   "textPath",
 ];
 
-var caseSensitiveTagNamesMap: { [key: string]: string } = {};
-var tagName;
+let caseSensitiveTagNamesMap: { [key: string]: string } = {};
 
-for (var i = 0, len = CASE_SENSITIVE_TAG_NAMES.length; i < len; i++) {
-  tagName = CASE_SENSITIVE_TAG_NAMES[i];
+for (let i = 0, len = CASE_SENSITIVE_TAG_NAMES.length; i < len; i++) {
+  const tagName = CASE_SENSITIVE_TAG_NAMES[i];
   caseSensitiveTagNamesMap[tagName.toLowerCase()] = tagName;
 }
 
@@ -64,7 +63,7 @@ function getCaseSensitiveTagName(tagName: string): string | undefined {
  */
 export function formatTagName(tagName: string): string {
   tagName = tagName.toLowerCase();
-  var caseSensitiveTagName = getCaseSensitiveTagName(tagName);
+  const caseSensitiveTagName = getCaseSensitiveTagName(tagName);
   if (caseSensitiveTagName) {
     return caseSensitiveTagName;
   }
