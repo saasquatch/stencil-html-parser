@@ -1,0 +1,39 @@
+{
+  "name": "@saasquatch/stencil-html-parser",
+  "version": "1.0.1",
+  "private": false,
+  "description": "An HTML parser for creating dynamic Stencil components",
+  "source": "src/index.ts",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "module": "build/index.module.js",
+  "files": [
+    "build"
+  ],
+  "homepage": "https://github.com/saasquatch/stencil-html-parser",
+  "repository": {
+    "type": "git",
+    "directory": "https://github.com/saasquatch/stencil-html-parser"
+  },
+  "scripts": {
+    "build": "microbundle",
+    "dev": "microbundle watch",
+    "test": "stencil test --e2e"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^26.0.15",
+    "@types/puppeteer": "^5.4.0",
+    "jest": "^26.6.3",
+    "jest-cli": "^26.6.3",
+    "jest-cucumber": "^3.0.0",
+    "microbundle": "^0.12.4",
+    "puppeteer": "^5.4.1",
+    "ts-jest": "^26.4.4"
+  },
+  "dependencies": {
+    "@stencil/core": "^1.17.4",
+    "style-to-object": "^0.3.0"
+  }
+}
