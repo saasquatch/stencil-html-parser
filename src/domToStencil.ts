@@ -1,10 +1,13 @@
-import { VNode, h } from "@stencil/core";
-import { attributesToProps } from "./attributesToProps";
-import { formatAttributes } from "./formatAttributes";
-import { formatTagName } from "./formatTagName";
+import { VNode } from "@stencil/core";
+import { elementToVNode } from "./elementToVNode";
 
 type StencilNode = VNode | string;
 
+/**
+ * Turns DOM into stencil VNodes
+ *
+ * @param nodes - A native DOM NodeList (see: https://developer.mozilla.org/en-US/docs/Web/API/NodeList)
+ */
 export function domToStencil(nodes: NodeList): StencilNode[] {
   let result: StencilNode[] = [];
 
@@ -43,18 +46,4 @@ export function domToStencil(nodes: NodeList): StencilNode[] {
     }
   }
   return result;
-}
-
-function elementToVNode(node: HTMLElement) {
-  let childNodes = node.childNodes;
-
-  const attr = formatAttributes(node.attributes);
-  const props = attributesToProps(attr);
-
-  if (node.nodeName === "TEMPLATE") {
-    props.innerHTML = (node as HTMLTemplateElement).innerHTML;
-  }
-
-  //@ts-ignore
-  return h(formatTagName(node.nodeName), props, domToStencil(childNodes));
 }
