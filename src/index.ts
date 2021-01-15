@@ -1,7 +1,6 @@
 import { VNode } from "@stencil/core";
-import { domToStencil } from "./domToStencil";
+import { domToStencil, elementToVNode } from "./domToStencil";
 import { domparser } from "./domparser";
-import { elementToVNode } from "./elementToVNode";
 import { attributesToProps } from "./attributesToProps";
 
 /**

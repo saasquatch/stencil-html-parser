@@ -1,6 +1,6 @@
 {
   "name": "@saasquatch/stencil-html-parser",
-  "version": "1.0.2",
+  "version": "1.0.1",
   "private": false,
   "description": "An HTML parser for creating dynamic Stencil components",
   "source": "src/index.ts",

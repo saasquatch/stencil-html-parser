@@ -1,5 +1,5 @@
 import { VNode } from "@stencil/core";
-import { elementToVNode } from "./elementToVNode";
+import { attributesToProps } from "./attributesToProps";
 
 type StencilNode = VNode | string;
 
@@ -46,4 +46,26 @@ export function domToStencil(nodes: NodeList): StencilNode[] {
     }
   }
   return result;
+}
+
+
+/**
+ * Converts an `HTMLElement` into a compatible Stencil `VNode`.
+ * 
+ *  - Special handling for parsing `style` attributes as objects
+ *  - Special handling for `template` inner HTML
+ * 
+ * @param node 
+ */
+export function elementToVNode(node: HTMLElement): VNode {
+  let childNodes = node.childNodes;
+
+  const props = attributesToProps(node.attributes);
+
+  if (node.nodeName === "TEMPLATE") {
+    props.innerHTML = (node as HTMLTemplateElement).innerHTML;
+  }
+
+  //@ts-ignore
+  return h(formatTagName(node.nodeName), props, domToStencil(childNodes));
 }
