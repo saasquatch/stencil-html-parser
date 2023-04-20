@@ -32,7 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial release
 
 [unreleased]: https://github.com/saasquatch/stencil-html-parser/compare/@saasquatch%2Fstencil-html-parser@1.0.3...HEAD
-[1.0.3]: https://github.com/saasquatch/stencil-html-parser/compare/@saasquatch%2Fstencil-html-parser@1.0.2...@saasquatch%2Fstencil-html-parser@1.0.3
-[1.0.2]: https://github.com/saasquatch/stencil-html-parser/compare/@saasquatch%2Fstencil-html-parser@1.0.1...@saasquatch%2Fstencil-html-parser@1.0.2
-[1.0.1]: https://github.com/saasquatch/stencil-html-parser/compare/@saasquatch%2Fstencil-html-parser@1.0.0...@saasquatch%2Fstencil-html-parser@1.0.1
-[1.0.0]: https://github.com/saasquatch/stencil-html-parser/compare/@saasquatch%2Fstencil-html-parser@1.0.0
+[1.0.3]: https://github.com/saasquatch/stencil-html-parser/compare/V1.0.2...@saasquatch%2Fstencil-html-parser@1.0.3
+[1.0.2]: https://github.com/saasquatch/stencil-html-parser/compare/V1.0.1...V1.0.2
+[1.0.1]: https://github.com/saasquatch/stencil-html-parser/compare/V1.0.0...V1.0.1
+[1.0.0]: https://github.com/saasquatch/stencil-html-parser/releases/tag/V1.0.0
